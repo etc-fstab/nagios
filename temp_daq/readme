@@ -1,10 +1,22 @@
-INTRO
-
+Intro
+-----
 There is the DAQ temperature device in a server room, 
 Here is the plugin [check_temp_daq.sh] to query the DAQ and get the temperature.
 
+Nagios
+------
+The service cfg for this check is something like:
+define service{
+  # may diff for you
+  use                    generic,pnp  
+  service_description    room_temperature
+  host_name              your-fqdn
+  check_command          check_temp_module_daq!85!95
+ }
 
-GRAPH
 
+Graph
+-----
 The pnp4nagios is used for graphing and here is the relevant template, 
 most likely located in /usr/share/pnp4nagios/templates and called check_temp_module_daq.php
+
